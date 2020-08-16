@@ -11,12 +11,18 @@ public class SpacecraftFuelCounterService
 	 */
 	public static int calculateFuelRequiredForSpaceCraft(Spacecraft spacecraft)
 	{
+		//Modified for part 2, fuel now also requires fuel.
+//		List<SpacecraftModule> spacecraftModules = spacecraft.getSpacecraftModules();
+//		Stream<SpacecraftModule> stream = spacecraftModules.stream();
+//		return stream.map(x -> x.getMass())
+//		      .map(x -> x / 3)
+//		      .map(x -> x - 2)
+//		      .mapToInt(x -> x)
+//			  .sum();
 		List<SpacecraftModule> spacecraftModules = spacecraft.getSpacecraftModules();
 		Stream<SpacecraftModule> stream = spacecraftModules.stream();
-		return stream.map(x -> x.getMass())
-		      .map(x -> x / 3)
-		      .map(x -> x - 2)
-		      .mapToInt(x -> x)
-			  .sum();
+		return stream.map(x -> SpacecraftModuleFuelCounterService.calculateFuelRequiredForSpacecraftModule(x))
+				.mapToInt(x -> x)
+				.sum();
 	}
 }
