@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Spacecraft {
+public class Spacecraft 
+{
 	private List<SpacecraftModule> spacecraftModules = initialiseSpacecraftModules();
 
 	private List<SpacecraftModule> initialiseSpacecraftModules() 
@@ -16,7 +17,7 @@ public class Spacecraft {
 		List<SpacecraftModule> ret = new ArrayList<SpacecraftModule>();
 		try
 		{
-			Stream<String> stream = Files.lines(Paths.get("src/main/resources/input.txt"));
+			Stream<String> stream = Files.lines(Paths.get(MainApplication.INPUT_FILE_LOCATION));
 			ret = stream.map(Integer::valueOf)
 						.map(x -> new SpacecraftModule(x))
 					    .collect(Collectors.toList());

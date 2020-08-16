@@ -5,6 +5,10 @@ import java.util.stream.Stream;
 
 public class SpacecraftFuelCounterService 
 {
+	/**
+	 * Fuel required to launch a given module is based on its mass. 
+	 * Specifically, to find the fuel required for a module, take its mass, divide by three, round down, and subtract 2.
+	 */
 	public static int calculateFuelRequiredForSpaceCraft(Spacecraft spacecraft)
 	{
 		List<SpacecraftModule> spacecraftModules = spacecraft.getSpacecraftModules();
